@@ -20,6 +20,9 @@ jobs:
       run: |
         mysql -uroot -proot < databases/tracker/create_databases.sql
         ./gradlew testMigrate
+<<<<<<< HEAD
+>>>>>>> 1511056... Add task for migrating databases
+=======
 >>>>>>> 1511056... Add task for migrating databases
     - name: Build with Gradle
       run: ./gradlew build
