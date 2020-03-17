@@ -34,3 +34,4 @@ apply plugin:'org.springframework.boot'
 bootJar {
     mainClassName = 'io.pivotal.pal.tracker.PalTrackerApplication'
 }
+
