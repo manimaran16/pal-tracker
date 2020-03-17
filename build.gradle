@@ -15,9 +15,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
             }
 }
-jar{
-    enabled=true
-}
+
 test {
     useJUnitPlatform()
 }
@@ -28,3 +26,11 @@ bootRun.environment([
 test.environment([
         "WELCOME_MESSAGE": "Hello from test",
 ])
+
+apply plugin:'java'
+apply plugin:'io.spring.dependency-management'
+apply plugin:'org.springframework.boot'
+
+bootJar {
+    mainClassName = 'io.pivotal.pal.tracker.PalTrackerApplication'
+}
