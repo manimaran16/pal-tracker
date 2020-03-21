@@ -14,7 +14,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
-    id "org.flywaydb.flyway" version "5.2.1"
+    id "org.flywaydb.flyway" version "6.0.1"
 }
 
 repositories {
@@ -34,12 +34,12 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-def developmentDbUrl = "jdbc:mysql://127.0.0.1:3306/tracker_dev?user=tracker&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
+def developmentDbUrl = "jdbc:mysql://localhost:3306/tracker_dev?user=tracker&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
 bootRun.environment([
         "WELCOME_MESSAGE": "hello",
         "SPRING_DATASOURCE_URL":developmentDbUrl
 ])
-def testDbUrl ="jdbc:mysql://127.0.0.1:3306/tracker_test?user=tracker&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
+def testDbUrl ="jdbc:mysql://localhost:3306/tracker_test?user=tracker&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
 test.environment([
         "WELCOME_MESSAGE": "Hello from test",
         "SPRING_DATASOURCE_URL":testDbUrl
@@ -61,4 +61,8 @@ apply plugin:'org.springframework.boot'
 
 bootJar {
     mainClassName = 'io.pivotal.pal.tracker.PalTrackerApplication'
+}
+
+task Migrate(type: FlywayMigrateTask){
+    url=developmentDbUrl
 }
