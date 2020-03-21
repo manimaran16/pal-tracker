@@ -1,5 +1,6 @@
 package test.pivotal.pal.tracker;
 
+import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.DistributionSummary;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.pivotal.pal.tracker.TimeEntry;
